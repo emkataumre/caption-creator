@@ -32,6 +32,5 @@ This is the Angular frontend for the Caption Creator project.
 ## Notes
 
 - The frontend expects the backend (API/WebSocket) to be running at `http://localhost:3000/`.
-- For any issues, check the console output or refer to the `todo.md` for pending tasks.
 
 ---
