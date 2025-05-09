@@ -32,6 +32,7 @@ This is the Angular frontend for the Caption Creator project.
 ## Notes
 
 - The frontend expects the backend (API/WebSocket) to be running at `http://localhost:3000/`.
+- If you notice the two loading indicators in the chat interface, that is becuase one of them represents a global loading state and the other component level loading.
 
 ---
 
@@ -64,6 +65,31 @@ Same as Frontend without the Angular CLI
    http://localhost:3000/
    ```
 
+## Testing
+
+The backend includes comprehensive test coverage using Jest. The tests verify:
+- WebSocket message handling and chunking
+- Client connection/disconnection management
+- Error handling
+- Response streaming behavior
+
+To run the tests:
+```sh
+npm test
+```
+
+To run tests in watch mode (useful during development):
+```sh
+npm run test:watch
+```
+
+The test suite includes specific tests for the AI gateway functionality, ensuring:
+- Messages are properly chunked and streamed
+- Client connections are tracked correctly
+- Disconnections are handled gracefully
+- Error scenarios are properly managed
+- Streaming stops appropriately when clients disconnect
+
 ## Notes
 
 - The backend logs all incoming messages with timestamps.
@@ -82,5 +108,3 @@ This backend uses a WebSocket (Socket.IO) interface for all AI interactions, rat
 **How to test:**  
 To interact with the backend, use the provided frontend or any Socket.IO-compatible client.  
 Traditional HTTP tools like `curl` or `wscat` will not work with this server, as it is not a plain WebSocket or REST API.
-
----
