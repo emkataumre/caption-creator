@@ -1,0 +1,9 @@
+<div class="action-buttons">
+  <app-button
+    *ngFor="let action of actions"
+    variant="action"
+    [icon]="action.isLoading ? 'hourglass_empty' : action.icon"
+    [disabled]="action.isLoading"
+    (onClick)="handleAction(action.action)">
+  </app-button>
+</div>

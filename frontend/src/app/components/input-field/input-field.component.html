@@ -1,0 +1,56 @@
+<div class="input-field__container">
+  <form (ngSubmit)="submitPrompt()">
+    <div class="input-field__wrapper">
+      <textarea
+        #autoResizeTextarea
+        class="input-field__textarea"
+        placeholder="E.g. fitness tips, product launch, summer sales..."
+        [(ngModel)]="promptText"
+        name="promptText"
+        rows="1"
+        [disabled]="disabled || checkIsLoading(LoadingKey.MESSAGE_INPUT)"
+        aria-label="AI prompt input">
+      </textarea>
+
+      <div class="input-field__button-group">
+        <div class="input-field__button-subgroup">
+          <app-button icon="add" [disabled]="disabled"></app-button>
+          <app-button
+            variant="search"
+            icon="search"
+            [disabled]="disabled"
+            [isActive]="isSearchActive"
+            (onClick)="toggleSearch()"
+            >Search</app-button
+          >
+          <app-button icon="more_horiz" [disabled]="disabled"></app-button>
+        </div>
+        <app-button
+          *ngIf="variant === 'landing'"
+          variant="send-landing"
+          icon="auto_awesome"
+          [disabled]="
+            !promptText.trim() ||
+            disabled ||
+            checkIsLoading(LoadingKey.MESSAGE_INPUT)
+          "
+          type="submit">
+          Generate topic for me
+        </app-button>
+
+        <app-button
+          *ngIf="variant === 'chat'"
+          variant="send-chat"
+          icon="send"
+          [disabled]="
+            !promptText.trim() ||
+            disabled ||
+            checkIsLoading(LoadingKey.MESSAGE_INPUT)
+          "
+          type="submit">
+          Send
+        </app-button>
+      </div>
+    </div>
+  </form>
+</div>

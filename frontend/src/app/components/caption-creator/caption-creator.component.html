@@ -1,0 +1,48 @@
+<main class="caption-creator">
+  <mat-progress-bar
+    *ngIf="checkIsLoading(LoadingKey.AI_RESPONSE)"
+    mode="indeterminate"
+    class="caption-creator__progress">
+  </mat-progress-bar>
+
+  <header class="caption-creator__header">
+    <h1 class="caption-creator__title" (click)="resetToLanding()">
+      Create Captions
+    </h1>
+  </header>
+
+  <section class="caption-creator__main" *ngIf="!isInChatMode">
+    <h2 class="caption-creator__subtitle">What is your post about?</h2>
+
+    <app-input-field
+      variant="landing"
+      class="caption-creator__input-field"
+      (onSubmit)="handlePromptSubmit($event)">
+    </app-input-field>
+
+    <aside class="caption-creator__suggestions">
+      <h3 class="caption-creator__suggestions-title">
+        Suggested prompts based on your Product
+      </h3>
+      <div class="caption-creator__suggestions-list">
+        <app-prompt-suggestions
+          *ngFor="let suggestion of suggestions; let i = index"
+          [title]="suggestion.title"
+          [icon]="suggestion.icon"
+          [prompt]="suggestion.prompt"
+          [isDisabled]="
+            selectedPromptIndex !== null && selectedPromptIndex !== i
+          "
+          (onClick)="onPromptSelect(suggestion.prompt, i)">
+        </app-prompt-suggestions>
+      </div>
+    </aside>
+  </section>
+
+  <section class="caption-creator__chat-section" *ngIf="isInChatMode">
+    <app-chat
+      class="caption-creator__chat"
+      [initialMessage]="messages.length > 0 ? messages[0].text : undefined">
+    </app-chat>
+  </section>
+</main>

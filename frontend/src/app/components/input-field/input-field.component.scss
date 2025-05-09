@@ -1,0 +1,80 @@
+.input-field__container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-field__wrapper {
+  background-color: #f3f3f3;
+  width: 100%;
+  border-radius: 9px;
+  padding: 10px;
+  border: 1px solid #4d4d4d;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  .input-field__textarea {
+    resize: none;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 22px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    min-height: 50px;
+    max-height: 300px;
+    overflow-y: auto;
+    transition: height 0.2s ease;
+
+    /* Customize scrollbar */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f3f3f3;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #666;
+    }
+
+    &::placeholder {
+      color: #4d4d4d;
+      font-size: 22px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.input-field {
+  &__button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 0;
+  }
+
+  &__button-subgroup {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+  }
+
+  &__textarea {
+    min-height: 24px;
+    resize: none;
+  }
+}

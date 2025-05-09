@@ -1,0 +1,14 @@
+<button
+  class="button"
+  [class.button--search]="variant === 'search'"
+  [class.button--send-landing]="variant === 'send-landing'"
+  [class.button--send-chat]="variant === 'send-chat'"
+  [class.button--action]="variant === 'action'"
+  [class.button--disabled]="disabled"
+  [class.button--active]="isActive"
+  [disabled]="disabled"
+  [type]="type"
+  (click)="onClick.emit($event)">
+  <i *ngIf="icon" class="material-icons">{{ icon }}</i>
+  <ng-content></ng-content>
+</button>

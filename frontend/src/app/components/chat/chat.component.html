@@ -1,0 +1,44 @@
+<div class="chat">
+  <!-- Add loading indicator -->
+  <mat-progress-bar
+    *ngIf="checkIsLoading(LoadingKey.AI_RESPONSE)"
+    mode="indeterminate"
+    color="primary"
+    class="chat__loading">
+  </mat-progress-bar>
+
+  <div class="chat__messages" #messagesContainer>
+    <!-- Messages -->
+    <div
+      *ngFor="let message of messages"
+      class="chat__message"
+      [ngClass]="{
+        'chat__message--user': message.isUser,
+        'chat__message--bot': !message.isUser,
+      }">
+      <ng-container
+        *ngIf="!message.isUser && message.isTyping; else messageText">
+        <div class="typing-indicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </ng-container>
+      <ng-template #messageText>
+        {{ message.text }}
+      </ng-template>
+      <app-action-buttons
+        *ngIf="!message.isUser && !message.isTyping"
+        class="chat__message-actions">
+      </app-action-buttons>
+    </div>
+  </div>
+
+  <!-- Input field -->
+  <app-input-field
+    variant="chat"
+    class="chat__input"
+    [disabled]="checkIsLoading(LoadingKey.AI_RESPONSE)"
+    (onSubmit)="onMessageSubmit($event)">
+  </app-input-field>
+</div>
