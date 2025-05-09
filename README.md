@@ -41,8 +41,7 @@ This is the NestJS backend for the Caption Creator project.
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+Same as Frontend without the Angular CLI
 
 ## Setup
 
